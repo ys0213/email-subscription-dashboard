@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import emailjs from '@emailjs/browser';
 
 interface FormData {
   email: string;
@@ -22,6 +23,35 @@ const EmailSubscriptionForm: React.FC = () => {
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  };
+
+  const sendConfirmationEmail = async (email: string) => {
+    try {
+      // Initialize EmailJS with your public key
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
+      
+      const templateParams = {
+        to_email: email,
+        from_name: 'Newsletter Team',
+        message: 'Thank you for subscribing to our newsletter! You will receive our latest updates and news.',
+        reply_to: email,
+        user_email: email,
+        subscription_date: new Date().toLocaleDateString(),
+      };
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        templateParams
+      );
+
+      console.log('Confirmation email sent successfully:', result);
+    } catch (emailError) {
+      console.error('Failed to send confirmation email:', emailError);
+      // Don't fail the subscription if email sending fails
+      // The user is still subscribed to the database
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,6 +96,9 @@ const EmailSubscriptionForm: React.FC = () => {
       }
 
       console.log('Subscription successful:', result);
+      
+      // Send confirmation email using EmailJS
+      await sendConfirmationEmail(formData.email);
       
       setFormState({
         isLoading: false,
