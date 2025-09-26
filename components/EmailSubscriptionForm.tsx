@@ -26,9 +26,19 @@ const EmailSubscriptionForm: React.FC = () => {
   };
 
   const sendConfirmationEmail = async (email: string) => {
+    // Check if EmailJS credentials are configured
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+
+    if (!publicKey || !serviceId || !templateId) {
+      console.log('EmailJS not configured - skipping confirmation email');
+      return;
+    }
+
     try {
       // Initialize EmailJS with your public key
-      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
+      emailjs.init(publicKey);
       
       const templateParams = {
         to_email: email,
@@ -40,11 +50,7 @@ const EmailSubscriptionForm: React.FC = () => {
       };
 
       // Send email using EmailJS
-      const result = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
-        templateParams
-      );
+      const result = await emailjs.send(serviceId, templateId, templateParams);
 
       console.log('Confirmation email sent successfully:', result);
     } catch (emailError) {
