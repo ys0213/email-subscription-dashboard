@@ -52,7 +52,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   } catch (error) {
     console.error('Subscription error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    
+    // Return more specific error information for debugging
+    if (error instanceof Error) {
+      if (error.message.includes('MongoDB') || error.message.includes('connection')) {
+        return res.status(503).json({ 
+          message: 'Database connection error. Please try again later.',
+          error: 'MongoDB connection failed'
+        });
+      }
+    }
+    
+    res.status(500).json({ 
+      message: 'Internal server error',
+      error: process.env.NODE_ENV === 'development' ? error : undefined
+    });
   }
 }
 
