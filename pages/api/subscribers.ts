@@ -51,7 +51,7 @@ async function handleGet(req: NextApiRequest, res: NextApiResponse) {
     });
 
     const AllSubscribers = await Subscriber.countDocuments();
-    const ActiveSubscribersRate = totalSubscribers/AllSubscribers*100;
+    const ActiveSubscribersRate = Math.round(totalSubscribers/AllSubscribers*100);
 
     res.status(200).json({
       subscribers,
