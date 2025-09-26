@@ -62,7 +62,7 @@ const EmailSubscriptionForm: React.FC = () => {
 
       if (!response.ok) {
         console.log('Subscription failed:', result);
-        throw new Error(result.error.errors.email.message || result.message || 'Failed to subscribe');
+        throw new Error(result.error?.errors?.email?.message || result.message || 'Failed to subscribe');
       }
 
       console.log('Subscription successful:', result);
