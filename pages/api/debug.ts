@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     // Basic API test
-    const debugInfo = {
+    const debugInfo: any = {
       message: 'Debug endpoint is working',
       timestamp: new Date().toISOString(),
       environment: process.env.NODE_ENV,
