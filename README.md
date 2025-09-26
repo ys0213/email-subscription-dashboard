@@ -2,7 +2,7 @@
 
 A modern, full-stack email subscription management system built with Next.js, MongoDB, and TailwindCSS. This project includes both a public subscription form and an admin dashboard for managing subscribers.
 
-## 🚀 Features
+## Features
 
 ### Public Subscription Page
 - **Email Subscription Form**: Clean, responsive form with validation
@@ -23,7 +23,7 @@ A modern, full-stack email subscription management system built with Next.js, Mo
 - **Data Validation**: Server-side email validation and duplicate prevention
 - **Error Handling**: Comprehensive error handling and logging
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend**: Next.js 14, React 18, TypeScript
 - **Styling**: TailwindCSS with dark mode support
@@ -31,11 +31,11 @@ A modern, full-stack email subscription management system built with Next.js, Mo
 - **Email Service**: EmailJS (optional)
 - **Deployment**: Vercel-ready
 
-## 📦 Installation
+## Installation
 
 1. **Clone the repository**:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ys0213/email-subscription-dashboard.git
 cd email-subscription-dashboard
 ```
 
@@ -68,7 +68,7 @@ npm run dev
 6. **Open your browser**:
 Navigate to `http://localhost:3000`
 
-## 🗄️ Database Setup
+## Database Setup
 
 ### MongoDB Atlas Setup
 1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/atlas)
@@ -88,7 +88,7 @@ The application uses a simple `Subscriber` model:
 }
 ```
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### POST `/api/subscribe`
 Subscribe a new email address
@@ -136,7 +136,7 @@ Fetch subscribers with pagination and search
 }
 ```
 
-## 🎨 Pages & Components
+## Pages & Components
 
 ### Pages
 - **`/`** - Public subscription form
@@ -147,7 +147,7 @@ Fetch subscribers with pagination and search
 - **`SubscriberTable`** - Data table with search, pagination, and email masking
 - **`StatCard`** - Reusable metric display cards
 
-## 🔒 Privacy & Security
+## Privacy & Security
 
 - **Email Masking**: Subscriber emails are partially masked in the dashboard
 - **Input Validation**: Both client and server-side validation
@@ -155,7 +155,7 @@ Fetch subscribers with pagination and search
 - **Environment Variables**: Sensitive data stored in environment variables
 - **MongoDB Security**: Connection string and credentials secured
 
-## 🚀 Deployment
+## Deployment
 
 ### Deploy to Vercel
 1. **Push to GitHub**:
@@ -178,7 +178,7 @@ EMAILJS_TEMPLATE_ID=your_emailjs_template_id
 EMAILJS_PUBLIC_KEY=your_emailjs_public_key
 ```
 
-## 📊 Features in Detail
+## Features in Detail
 
 ### Email Masking
 For privacy protection, emails are displayed as:
@@ -195,7 +195,7 @@ For privacy protection, emails are displayed as:
 - **Recent Signups**: Subscribers who joined in the last 7 days
 - **Active Rate**: Percentage of active vs inactive subscribers
 
-## 🔧 Customization
+## Customization
 
 ### Adding New Fields
 1. Update the `Subscriber` model in `models/Subscriber.ts`
@@ -212,15 +212,15 @@ For privacy protection, emails are displayed as:
 - Customize email content and styling
 - Add unsubscribe functionality
 
-## 📝 License
+## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [MIT License].
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📞 Support
+## Support
 
 If you have any questions or need help setting up the project, please open an issue on GitHub.
 
