@@ -14,6 +14,9 @@ if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
 }
 
+// Log connection attempt (remove in production)
+console.log('MongoDB URI configured:', MONGODB_URI ? 'Yes' : 'No');
+
 /**
  * Global is used here to maintain a cached connection across hot reloads
  * in development. This prevents connections growing exponentially
