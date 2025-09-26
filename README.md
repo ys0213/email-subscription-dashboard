@@ -2,6 +2,9 @@
 
 A modern, full-stack email subscription management system built with Next.js, MongoDB, and TailwindCSS. This project includes both a public subscription form and an admin dashboard for managing subscribers.
 
+# Demo
+https://email-subscription-dashboard.vercel.app/
+
 ## Features
 
 ### Public Subscription Page
